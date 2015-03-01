@@ -341,7 +341,7 @@ void Fractale::save()
 {
     QString title;
     if(this->isJulia) {
-        title = QString("JULIA_x_%1_y_%2.jpg").arg(this->orig_x, this->orig_y);
+        title = QString("JULIA_x_%1_y_%2.jpg").arg(this->orig_x).arg(this->orig_y);
     }
     else {
         title = QString("MANDELBROT_begX_%1_begY_%2_size_%3.jpg").arg(QString::number(this->beginX)).arg(QString::number(this->beginY)).arg(QString::number(this->sizeReal));
