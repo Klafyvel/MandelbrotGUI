@@ -103,6 +103,7 @@ private:
     QPushButton* zoomMinus;
     QCheckBox* displayResult;
 
+    QGridLayout* pad;
     QPushButton* left;
     QPushButton* right;
     QPushButton* top;

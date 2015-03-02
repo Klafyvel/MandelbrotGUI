@@ -58,12 +58,18 @@ Fractale::Fractale(bool isJulia, QWidget *parent) :
     this->saveImage = new QPushButton(QString("Enregistrer l'image"));
     this->zoomMinus = new QPushButton(QString("Zommer en arrière"));
     this->zoomPlus = new QPushButton(QString("Zommer en avant"));
+    this->pad = new QGridLayout;
     this->left = new QPushButton(QString("<"));
     this->right = new QPushButton(QString(">"));
     this->top = new QPushButton(QString("^"));
     this->bottom = new QPushButton(QString("v"));
     this->reset = new QPushButton(QString("Réinitialiser"));
     this->displayResult = new QCheckBox();
+
+//    this->left->setMaximumWidth(32);
+//    this->right->setMaximumWidth(32);
+//    this->top->setMaximumWidth(32);
+//    this->bottom->setMaximumWidth(32);
 
     this->zoomMinus->setShortcut(Qt::Key_Minus);
     this->zoomPlus->setShortcut(Qt::Key_Plus);
@@ -114,10 +120,15 @@ Fractale::Fractale(bool isJulia, QWidget *parent) :
     this->settings->setLayout(this->settingsArea);
     this->tabs->addTab(this->settings, "Réglages");
 
-    this->controlArea->addWidget(this->top);
-    this->controlArea->addWidget(this->left);
-    this->controlArea->addWidget(this->right);
-    this->controlArea->addWidget(this->bottom);
+    this->pad->addWidget(this->top, 0, 1, 1, 1);
+    this->pad->addWidget(this->left, 1, 0, 1, 1);
+    this->pad->addWidget(this->right, 1, 2, 1, 1);
+    this->pad->addWidget(this->bottom, 1, 1, 1, 1);
+//    this->controlArea->addWidget(this->top);
+//    this->controlArea->addWidget(this->left);
+//    this->controlArea->addWidget(this->right);
+//    this->controlArea->addWidget(this->bottom);
+    this->controlArea->addLayout(this->pad);
     this->controlArea->addWidget(this->zoomPlus);
     this->controlArea->addWidget(this->zoomMinus);
     this->controlArea->addWidget(this->zoom);
