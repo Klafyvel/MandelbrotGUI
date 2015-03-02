@@ -21,6 +21,7 @@
 #include <QCheckBox>
 #include <QMouseEvent>
 #include <QFileDialog>
+#include <QTabWidget>
 
 class ImageDisplay : public QLabel
 {
@@ -63,6 +64,7 @@ public:
     static Fractale& Mandelbrot(QWidget *parent = 0);
     static Fractale& Julia(QWidget *parent = 0);*/
     void draw();
+    void drawAndShow();
     void move(int mv);
 
 signals:
@@ -86,7 +88,11 @@ private:
     QImage* image;
     ImageDisplay* label;
     QHBoxLayout* layout;
+    QTabWidget* tabs;
 
+
+    QWidget* settings;
+    QWidget* controls;
     QFormLayout* settingsArea;
     QVBoxLayout* controlArea;
     QPushButton* redraw;
@@ -95,6 +101,7 @@ private:
     QPushButton* zoom;
     QPushButton* zoomPlus;
     QPushButton* zoomMinus;
+    QCheckBox* displayResult;
 
     QPushButton* left;
     QPushButton* right;
@@ -112,8 +119,10 @@ private:
 
     QSpinBox* inputColorRatio;
     QSpinBox* inputMaxIter;
-    QSpinBox* inputPixelSize;
-    QDoubleSpinBox* inputRealSize;
+    QSpinBox* inputPixelSizeX;
+    QSpinBox* inputPixelSizeY;
+    QDoubleSpinBox* inputRealSizeX;
+    QDoubleSpinBox* inputRealSizeY;
     ColorButton* color;
 
     bool settingZoom1;
@@ -124,8 +133,10 @@ private:
     int colorRatio;
     double beginX;
     double beginY;
-    double sizeReal;
-    int sizePx;
+    double sizeRealX;
+    double sizeRealY;
+    int sizePxX;
+    int sizePxY;
 
     bool isJulia;
     double orig_x;
