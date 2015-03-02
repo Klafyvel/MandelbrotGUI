@@ -22,6 +22,7 @@
 #include <QMouseEvent>
 #include <QFileDialog>
 #include <QTabWidget>
+#include <QShortcut>
 
 class ImageDisplay : public QLabel
 {
@@ -83,6 +84,9 @@ public slots:
     void switchInteractiveJulia();
     void save();
     void resetFigure();
+
+protected:
+    void keyPressEvent(QKeyEvent *ev);
 
 private:
     QImage* image;

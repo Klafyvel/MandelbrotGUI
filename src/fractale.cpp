@@ -68,20 +68,6 @@ Fractale::Fractale(bool isJulia, QWidget *parent) :
 
     this->displayResult->setChecked(true);
 
-//    this->left->setMaximumWidth(32);
-//    this->right->setMaximumWidth(32);
-//    this->top->setMaximumWidth(32);
-//    this->bottom->setMaximumWidth(32);
-
-    this->zoomMinus->setShortcut(Qt::Key_Minus);
-    this->zoomPlus->setShortcut(Qt::Key_Plus);
-    this->left->setShortcut(Qt::Key_Left);
-    this->right->setShortcut(Qt::Key_Right);
-    this->top->setShortcut(Qt::Key_Up);
-    this->bottom->setShortcut(Qt::Key_Down);
-    this->saveImage->setShortcut(Qt::Key_S);
-    this->redraw->setShortcut(Qt::Key_F5);
-
     this->inputOrigDrawX = new QDoubleSpinBox;
     this->inputOrigDrawY = new QDoubleSpinBox;
 
@@ -147,10 +133,12 @@ Fractale::Fractale(bool isJulia, QWidget *parent) :
 
     QObject::connect(this->activeInteractiveJulia, SIGNAL(clicked()), this, SLOT(switchInteractiveJulia()));
     QObject::connect(this->julia, SIGNAL(stateChanged(int)), this, SLOT(switchJulia(int)));
+
     QObject::connect(this->left, SIGNAL(clicked()), this, SLOT(moveLeft()));
     QObject::connect(this->right, SIGNAL(clicked()), this, SLOT(moveRight()));
     QObject::connect(this->top, SIGNAL(clicked()), this, SLOT(moveTop()));
     QObject::connect(this->bottom, SIGNAL(clicked()), this, SLOT(moveBottom()));
+
     QObject::connect(this->zoomPlus, SIGNAL(clicked()), this, SLOT(setZoomPlus()));
     QObject::connect(this->zoomMinus, SIGNAL(clicked()), this, SLOT(setZoomMinus()));
     QObject::connect(this->zoom, SIGNAL(clicked()), this, SLOT(beginZoom()));
@@ -460,4 +448,43 @@ void Fractale::resetFigure()
     delete this->image;
     this->image = new QImage(this->sizePxX, this->sizePxY, QImage::Format_RGB32);
     this->drawAndShow();
+}
+void Fractale::keyPressEvent(QKeyEvent *ev)
+{
+    if (ev->key() == Qt::Key_Q)
+    {
+        Fractale::moveLeft();
+    }
+    else if (ev->key() == Qt::Key_D)
+    {
+        Fractale::moveRight();
+    }
+    else if (ev->key() == Qt::Key_Z)
+    {
+        Fractale::moveTop();
+    }
+    else if (ev->key() == Qt::Key_S)
+    {
+        Fractale::moveBottom();
+    }
+    else if (ev->key() == Qt::Key_A)
+    {
+        Fractale::setZoomPlus();
+    }
+    else if (ev->key() == Qt::Key_E)
+    {
+        Fractale::setZoomMinus();
+    }
+    else if (ev->key() == Qt::Key_F5)
+    {
+        Fractale::changeSettingsAndRedraw();
+    }
+    else if (ev->key() == Qt::Key_R)
+    {
+        Fractale::save();
+    }
+    else
+    {
+        QWidget::keyPressEvent(ev);
+    }
 }
