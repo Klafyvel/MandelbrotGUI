@@ -1,6 +1,6 @@
 # MandelbrotGUI
 
-This programm allows user to explore Mandelbrot set or Julia set.
+This program allows user to explore Mandelbrot set or Julia set.
 
 Some parameters can be modified. (zoom, etc..)
 
