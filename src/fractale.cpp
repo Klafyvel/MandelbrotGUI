@@ -66,6 +66,8 @@ Fractale::Fractale(bool isJulia, QWidget *parent) :
     this->reset = new QPushButton(QString("Réinitialiser"));
     this->displayResult = new QCheckBox();
 
+    this->displayResult->setChecked(true);
+
 //    this->left->setMaximumWidth(32);
 //    this->right->setMaximumWidth(32);
 //    this->top->setMaximumWidth(32);
