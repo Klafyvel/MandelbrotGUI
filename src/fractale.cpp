@@ -18,7 +18,7 @@ QColor ColorButton::getColor()
 }
 void ColorButton::chooseColor()
 {
-    this->color = QColorDialog::getColor(Qt::white);
+    this->color = QColorDialog::getColor(this->color);
     this->setStyleSheet(QString("ColorButton {background-color: %1;} ColorButton:focus {outline:0;}").arg(this->color.name()));
 }
 
