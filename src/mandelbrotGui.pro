@@ -7,3 +7,7 @@ HEADERS += \
 SOURCES += \
     main.cpp \
     fractale.cpp
+
+OTHER_FILES += \
+    ../README.md \
+    ../LICENSE.md
