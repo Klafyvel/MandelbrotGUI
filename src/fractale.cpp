@@ -319,10 +319,8 @@ void Fractale::manageClick(QPoint p)
     }
     else if (this->activeJulia)
     {
-        std::cout << p.x() <<","<< p.y()<<std::endl;
         this->orig_x = double(p.x())/this->sizePxX*this->sizeRealX+this->beginX;
         this->orig_y = double(p.y())/this->sizePxY*this->sizeRealY-this->beginY;
-        std::cout << this->orig_x << "," << this->orig_y << std::endl;
         this->inputOrigJuliaX->setValue(this->orig_x);
         this->inputOrigJuliaY->setValue(this->orig_y);
         this->drawAndShow();
